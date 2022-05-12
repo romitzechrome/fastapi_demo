@@ -10,7 +10,7 @@ for ubuntu : => source env/bin/activate
 
 install all dependency from requirements.txt file.- => pip install -r requirements.txt
 
-for the start our api 
+for the start our apis 
 => fastapi_demo\app>python main.py 
 
 
