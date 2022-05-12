@@ -18,7 +18,7 @@ Apis:
 ---------------------------------------------------------------------
 ---For user register:-
 
-API = http://127.0.0.1:8000/user/registration
+API = http://127.0.0.1:8000/user/register
 Method = POST
 
 Request : 

@@ -26,7 +26,7 @@ async def get_password_hash(password):
     return hash_password
 
 
-@router.get("/get_user", response_description="User retrieved")
+@router.get("/get_users", response_description="User retrieved")
 async def get_users(credentials: HTTPAuthorizationCredentials = Security(security)):
     token = credentials.credentials
     if (auth_handler.decode_token(token)):
@@ -38,7 +38,7 @@ async def get_users(credentials: HTTPAuthorizationCredentials = Security(securit
         return ErrorResponseModel("An error occurred.", 404, "Token not valid")
     
 
-@router.post("/registration", response_description="user data added into the database")
+@router.post("/register", response_description="user data added into the database")
 async def add_user_data(user: UsersSchema = Body(...)):
     user = jsonable_encoder(user)
     passwordd = user["password"]
@@ -49,10 +49,10 @@ async def add_user_data(user: UsersSchema = Body(...)):
     password = await get_password_hash(passwordd)
     user["password"] = password    
     new_user = await add_user(user)
-    return ResponseModel(new_user, "User added successfully.")
+    return ResponseModel(new_user, "User register successfully.")
 
 
-@router.post("/login", response_description="user data added into the database")
+@router.post("/login", response_description="user login ")
 async def add_user_data(user: LoginUserModel = Body(...)):
     user = jsonable_encoder(user)
     email = user["email"]
